@@ -1,3 +1,4 @@
+// LawnKeeper v1.1 — Zone 7 Lawn Planner — built Apr 4 2026
 import { useState, useEffect, useRef } from "react";
 
 // ─── STORAGE (localStorage wrapper — works everywhere, not just Claude.ai) ───
@@ -5,6 +6,8 @@ const storage = {
   get: (key) => { try { const v = localStorage.getItem(key); return v ? JSON.parse(v) : null; } catch { return null; } },
   set: (key, val) => { try { localStorage.setItem(key, JSON.stringify(val)); } catch {} },
 };
+
+const APP_VERSION = "1.1.0";
 
 // ─── SEED JOURNAL — Apr 4 2026 lawn assessment from Claude conversation ───────
 const SEED_JOURNAL = [
@@ -744,7 +747,7 @@ export default function App() {
         {tab==="shop"&&<ShoppingTab bought={bought} setBought={setBought}/>}
         {tab==="settings"&&<SettingsTab apiKey={apiKey} setApiKey={setApiKey}/>}
         <div style={{marginTop:10,fontSize:8,color:"#3d5c3d",textAlign:"center",lineHeight:1.5}}>
-          Weather via Open-Meteo (live) · AI analysis via Anthropic · Prices approximate 2025–2026 · Zone 7, Ellicott City MD
+          Weather via Open-Meteo (live) · AI analysis via Anthropic · Prices approximate 2025–2026 · Zone 7, Ellicott City MD · v{APP_VERSION}
         </div>
       </div>
     </div>
